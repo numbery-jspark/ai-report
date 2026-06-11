@@ -1,27 +1,7 @@
 {
   "permissions": {
     "allow": [
-      "WebSearch",
-      "WebFetch(domain:www.evertune.ai)",
-      "WebFetch(domain:huggingface.co)",
-      "Bash(gh api *)",
-      "WebFetch(domain:www.marktechpost.com)",
-      "WebFetch(domain:github.com)",
-      "WebFetch(domain:fazm.ai)",
-      "WebFetch(domain:magazine.sebastianraschka.com)",
-      "WebFetch(domain:arxiv.org)",
-      "WebFetch(domain:lambda.ai)",
-      "WebFetch(domain:blog.jetbrains.com)",
-      "WebFetch(domain:gurusup.com)",
-      "WebFetch(domain:www.codebridge.tech)",
-      "WebFetch(domain:kili-technology.com)",
-      "WebFetch(domain:agentcorps.co)",
-      "WebFetch(domain:www.morphllm.com)",
-      "WebFetch(domain:pypi.org)",
-      "WebFetch(domain:raw.githubusercontent.com)",
-      "Bash(git add *)",
-      "Bash(git commit *)",
-      "Bash(git push *)"
+      "WebSearch"
     ]
   }
 }
