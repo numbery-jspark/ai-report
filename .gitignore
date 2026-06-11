@@ -1,0 +1,30 @@
+# Claude Code
+.claude/settings.local.json
+.claude/scheduled-tasks/
+
+# System
+.DS_Store
+Thumbs.db
+*.log
+
+# Node/npm
+node_modules/
+package-lock.json
+yarn.lock
+
+# Python
+__pycache__/
+*.pyc
+.env
+.venv/
+
+# Temp
+*.tmp
+temp/
+cache/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
