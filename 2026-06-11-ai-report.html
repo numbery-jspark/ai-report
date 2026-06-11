@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI & 에이전트 동향 리포트 — 2026.06.11</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #0f1117;
+    color: #e2e8f0;
+    line-height: 1.7;
+    padding: 0 0 60px;
+  }
+  .header {
+    background: linear-gradient(135deg, #1a1d27 0%, #12151f 100%);
+    border-bottom: 1px solid #2d3148;
+    padding: 40px 0 32px;
+    text-align: center;
+  }
+  .header .date-badge {
+    display: inline-block;
+    background: #6c63ff22;
+    color: #9d94ff;
+    border: 1px solid #6c63ff44;
+    border-radius: 20px;
+    padding: 4px 16px;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    margin-bottom: 16px;
+  }
+  .header h1 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: -0.5px;
+  }
+  .header p {
+    color: #64748b;
+    font-size: 14px;
+    margin-top: 8px;
+  }
+  .container { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+  .section { margin-top: 48px; }
+  .section-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  .section-title .badge {
+    background: #6c63ff;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 20px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+  .section-title h2 {
+    font-size: 20px;
+    font-weight: 600;
+    color: #f1f5f9;
+  }
+  .card {
+    background: #1a1d27;
+    border: 1px solid #2d3148;
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 16px;
+  }
+  .card:hover { border-color: #6c63ff55; transition: border-color 0.2s; }
+  .news-title {
+    font-size: 17px;
+    font-weight: 600;
+    color: #f1f5f9;
+    margin-bottom: 6px;
+  }
+  .news-summary {
+    font-size: 13px;
+    color: #6c63ff;
+    font-weight: 500;
+    margin-bottom: 12px;
+    padding: 6px 12px;
+    background: #6c63ff11;
+    border-left: 3px solid #6c63ff;
+    border-radius: 4px;
+  }
+  .news-body { font-size: 14px; color: #94a3b8; margin-bottom: 12px; }
+  .news-body p { margin-bottom: 8px; }
+  .importance {
+    font-size: 13px;
+    color: #34d399;
+    background: #34d39911;
+    border: 1px solid #34d39933;
+    border-radius: 6px;
+    padding: 8px 12px;
+  }
+  .importance::before { content: "✦ 왜 중요한가 — "; font-weight: 600; }
+  .source-chip {
+    display: inline-block;
+    font-size: 11px;
+    color: #64748b;
+    border: 1px solid #2d3148;
+    border-radius: 20px;
+    padding: 2px 10px;
+    margin-top: 10px;
+    text-decoration: none;
+  }
+  .source-chip:hover { color: #9d94ff; border-color: #6c63ff44; }
+  .deepdive-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: #f59e0b;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+  }
+  .deepdive h3 { font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 12px; }
+  .deepdive h4 { font-size: 14px; font-weight: 600; color: #9d94ff; margin: 16px 0 6px; }
+  .deepdive p { font-size: 14px; color: #94a3b8; margin-bottom: 8px; }
+  .tool-name { font-size: 15px; font-weight: 600; color: #f1f5f9; margin-bottom: 4px; }
+  .tool-desc { font-size: 13px; color: #94a3b8; }
+  .tool-tag {
+    display: inline-block;
+    font-size: 11px;
+    background: #1e293b;
+    color: #94a3b8;
+    border-radius: 4px;
+    padding: 2px 8px;
+    margin-right: 4px;
+    margin-top: 6px;
+  }
+  .company-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 14px 0;
+    border-bottom: 1px solid #1e293b;
+  }
+  .company-row:last-child { border-bottom: none; }
+  .company-logo {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .company-name { font-size: 13px; font-weight: 600; color: #f1f5f9; margin-bottom: 2px; }
+  .company-update { font-size: 13px; color: #94a3b8; }
+  .learn-item {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    padding: 14px 0;
+    border-bottom: 1px solid #1e293b;
+  }
+  .learn-item:last-child { border-bottom: none; }
+  .learn-num {
+    width: 28px;
+    height: 28px;
+    background: #6c63ff22;
+    color: #9d94ff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .learn-text { font-size: 14px; color: #94a3b8; }
+  .learn-text strong { color: #e2e8f0; }
+  footer {
+    text-align: center;
+    margin-top: 60px;
+    padding-top: 24px;
+    border-top: 1px solid #1e293b;
+    font-size: 12px;
+    color: #334155;
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="date-badge">2026년 6월 11일 수요일</div>
+  <h1>AI & 에이전트 동향 리포트</h1>
+  <p>오늘 알아야 할 AI 핵심 뉴스와 기술 트렌드 모음</p>
+</div>
+
+<div class="container">
+
+  <!-- 섹션 1: 핵심 뉴스 -->
+  <div class="section">
+    <div class="section-title">
+      <span class="badge">News</span>
+      <h2>오늘의 핵심 뉴스</h2>
+    </div>
+
+    <div class="card">
+      <div class="news-title">Anthropic Claude, 연매출 $300억 런레이트 돌파</div>
+      <div class="news-summary">2026년 1분기 80배 성장, Claude Code는 출시 9개월 만에 연매출 $25억</div>
+      <div class="news-body">
+        <p>Anthropic이 Claude의 연매출 런레이트가 $300억에 도달했다고 밝혔다. 2026년 1분기 성장률은 전년 동기 대비 80배로, 기업 역사상 가장 가파른 수익 곡선 중 하나로 평가된다.</p>
+        <p>특히 2025년 5월 공개 출시된 에이전틱 코딩 툴 Claude Code가 9개월 만에 연매출 $25억을 기록하며 성장을 주도하고 있다. AI 모델 단독 판매에서 에이전트 워크플로우 통합으로 수익 구조가 전환되고 있음을 보여주는 신호다.</p>
+      </div>
+      <div class="importance">LLM 자체보다 에이전트 워크플로우에서 실질 수익이 나오는 구조로의 전환을 확인하는 지표.</div>
+    </div>
+
+    <div class="card">
+      <div class="news-title">Google I/O: Gemini 3.5 Flash + 개인 AI 에이전트 Gemini Spark 발표</div>
+      <div class="news-summary">2시간 동안 100개 이상 발표, 플래그십 수준 성능을 4배 빠른 속도로</div>
+      <div class="news-body">
+        <p>Google I/O에서 Gemini 3.5 Flash가 공개됐다. 이전 Gemini 대비 4배 빠른 속도로 코딩 및 에이전틱 벤치마크에서 Gemini 3.1 Pro를 넘어서는 성능을 보인다. 속도와 성능의 트레이드오프를 크게 줄인 것이 핵심이다.</p>
+        <p>또한 개인 AI 에이전트 Gemini Spark와 에이전틱 앱 개발을 위한 새 개발자 플랫폼도 함께 발표됐다. Google이 단순 AI 어시스턴트를 넘어 사용자의 일상 워크플로우에 깊이 통합되는 에이전트 생태계 구축에 본격적으로 나선 것으로 해석된다.</p>
+      </div>
+      <div class="importance">빠른 추론 모델이 에이전트 파이프라인의 핵심 인프라가 되고 있으며, 개인용 에이전트 시장 경쟁이 본격화되는 시점.</div>
+    </div>
+
+    <div class="card">
+      <div class="news-title">Anthropic MCP, 9,700만 설치 돌파 — 에이전트 표준 인프라로 자리잡아</div>
+      <div class="news-summary">2026년 3월 기준 모든 주요 AI 공급사가 MCP 호환 툴링 출시</div>
+      <div class="news-body">
+        <p>Anthropic의 Model Context Protocol(MCP)이 2026년 3월 기준 9,700만 설치를 돌파했다. 실험적 표준에서 AI 에이전트 구축의 핵심 인프라로 전환됐음을 보여주는 수치다.</p>
+        <p>현재 OpenAI, Google, Meta 등 모든 주요 AI 공급사가 MCP 호환 툴링을 출시한 상태다. 특정 회사의 프로토콜이 업계 표준이 되는 것은 이례적인 일로, MCP는 에이전트가 외부 도구 및 데이터 소스와 상호작용하는 방식을 통일하는 역할을 하고 있다.</p>
+      </div>
+      <div class="importance">MCP를 이해하고 활용할 수 있는 능력이 에이전트 개발자의 핵심 역량이 됐음. 지금 배워야 할 가장 중요한 프로토콜.</div>
+    </div>
+
+    <div class="card">
+      <div class="news-title">OpenAI-Visa 파트너십: AI 에이전트가 결제를 직접 실행한다</div>
+      <div class="news-summary">사용자 허가 후 에이전트가 온라인 구매 자율 실행, 기업용 AI 결제도 탐색 중</div>
+      <div class="news-body">
+        <p>OpenAI와 Visa가 파트너십을 체결해 AI 에이전트가 사용자 허가 하에 온라인 구매를 직접 실행할 수 있는 기능을 개발 중이다. 에이전트가 단순히 정보를 전달하는 것을 넘어 실제 트랜잭션을 수행하는 단계로 진화하는 신호다.</p>
+        <p>기업용 AI 결제 솔루션도 함께 탐색되고 있어, 에이전트가 구매 발주, 비용 처리 등 기업 재무 워크플로우에 통합되는 방향으로 발전할 전망이다.</p>
+      </div>
+      <div class="importance">에이전트의 "실세계 행동 실행" 능력이 결제 영역까지 확장되면서 에이전트 신뢰성과 권한 관리의 중요성이 높아지는 시점.</div>
+    </div>
+
+    <div class="card">
+      <div class="news-title">NVIDIA Agent Toolkit 오픈소스 공개 — 엔터프라이즈 에이전트 구축 플랫폼</div>
+      <div class="news-summary">AI-Q 하이브리드 아키텍처로 쿼리 비용 50% 절감, Adobe·Salesforce·SAP 등 통합</div>
+      <div class="news-body">
+        <p>NVIDIA가 GTC에서 엔터프라이즈 AI 에이전트 구축을 위한 오픈소스 플랫폼 Agent Toolkit을 발표했다. 프론티어 모델을 오케스트레이션에, 오픈 Nemotron 모델을 리서치 작업에 활용하는 AI-Q 하이브리드 아키텍처가 핵심으로, 정확도는 높이면서 쿼리 비용을 50% 이상 절감한다고 밝혔다.</p>
+        <p>Adobe, Atlassian, Salesforce, SAP, ServiceNow, Siemens 등 주요 엔터프라이즈 소프트웨어사들이 통합을 발표했다. 기업 AI 에이전트 시장에서 NVIDIA의 소프트웨어 레이어 확장 전략의 일환이다.</p>
+      </div>
+      <div class="importance">하드웨어 회사 NVIDIA가 에이전트 소프트웨어 스택으로 영역을 확장하며, 엔터프라이즈 에이전트 인프라 경쟁의 새 플레이어로 등장.</div>
+    </div>
+  </div>
+
+  <!-- 섹션 2: 딥다이브 -->
+  <div class="section">
+    <div class="section-title">
+      <span class="badge" style="background:#f59e0b">Deep Dive</span>
+      <h2>오늘의 딥다이브</h2>
+    </div>
+    <div class="card deepdive">
+      <div class="deepdive-label">오늘의 핵심 주제</div>
+      <h3>Model Context Protocol(MCP) — 에이전트 시대의 USB 표준</h3>
+
+      <h4>배경: 왜 MCP가 필요했나</h4>
+      <p>AI 에이전트가 외부 도구(파일 시스템, 데이터베이스, API, 브라우저 등)와 상호작용하려면 각 도구마다 별도의 통합 코드를 작성해야 했다. N개의 에이전트 프레임워크와 M개의 도구가 있으면 N×M개의 커스텀 연결이 필요한 구조였다. MCP는 이 문제를 "표준 플러그"로 해결한다.</p>
+
+      <h4>핵심 구조: Host / Client / Server</h4>
+      <p><strong>MCP Host</strong>는 Claude Desktop, VS Code 같은 AI 애플리케이션이다. <strong>MCP Client</strong>는 호스트 내부에서 서버와 1:1 연결을 유지하는 프로토콜 클라이언트다. <strong>MCP Server</strong>는 특정 기능(파일 읽기, DB 쿼리, 웹 검색 등)을 표준 인터페이스로 노출하는 경량 프로그램이다.</p>
+      <p>통신은 JSON-RPC 2.0 기반으로, 서버는 세 가지 기본 기능을 제공한다: <strong>Tools</strong>(에이전트가 실행할 수 있는 함수), <strong>Resources</strong>(읽을 수 있는 데이터), <strong>Prompts</strong>(재사용 가능한 프롬프트 템플릿).</p>
+
+      <h4>왜 9,700만 설치인가 — 네트워크 효과</h4>
+      <p>MCP 서버를 한 번 만들면 MCP를 지원하는 모든 AI 클라이언트에서 바로 쓸 수 있다. Anthropic이 사양을 공개하고 오픈소스로 관리하면서 OpenAI, Google, Microsoft 등이 모두 호환 툴링을 출시했다. 이미 수천 개의 커뮤니티 MCP 서버가 존재하며(GitHub, Slack, PostgreSQL, Figma 등), 새로운 AI 앱을 만들 때 MCP 지원은 사실상 필수가 됐다.</p>
+
+      <h4>실용적 의미 — 지금 당장 할 수 있는 것</h4>
+      <p>Claude Desktop에서 MCP 서버를 설정하면 AI가 로컬 파일, 데이터베이스, 외부 API를 직접 읽고 실행할 수 있다. 개발자라면 <code>@modelcontextprotocol/sdk</code>로 커스텀 MCP 서버를 30분 안에 만들 수 있다. 기업 환경에서는 사내 시스템을 MCP 서버로 래핑해 AI 에이전트에게 안전하게 노출하는 아키텍처가 표준이 되고 있다.</p>
+    </div>
+  </div>
+
+  <!-- 섹션 3: 오픈소스 & 툴 -->
+  <div class="section">
+    <div class="section-title">
+      <span class="badge" style="background:#10b981">Open Source</span>
+      <h2>주목할 오픈소스 & 툴</h2>
+    </div>
+    <div class="card">
+      <div class="tool-name">EightX Labs — AI 에이전트 관리 플랫폼</div>
+      <div class="tool-desc">에이전트 채용·온보딩·운영·수익화를 위한 통합 플랫폼. 빌더 마켓플레이스, 멀티에이전트 오케스트레이터, Passport(에이전트 감사 추적) 기능 포함. 기업이 AI 에이전트를 사람처럼 "고용"하고 관리하는 새 패러다임을 제시한다.</div>
+      <span class="tool-tag">Multi-Agent</span><span class="tool-tag">Enterprise</span><span class="tool-tag">Orchestration</span>
+    </div>
+    <div class="card">
+      <div class="tool-name">NVIDIA Agent Toolkit (오픈소스)</div>
+      <div class="tool-desc">엔터프라이즈 에이전트 구축을 위한 오픈소스 플랫폼. 프론티어 모델 + Nemotron 경량 모델을 혼합 사용하는 AI-Q 하이브리드 아키텍처로 비용 절감. Adobe, Salesforce 등 주요 엔터프라이즈 시스템과 기본 통합 제공.</div>
+      <span class="tool-tag">Open Source</span><span class="tool-tag">Enterprise</span><span class="tool-tag">Hybrid Architecture</span>
+    </div>
+    <div class="card">
+      <div class="tool-name">Gemini 3.5 Flash API</div>
+      <div class="tool-desc">Google의 최신 속도 최적화 모델. 이전 Gemini 대비 4배 빠른 추론 속도로 에이전틱 파이프라인에서 비용 효율적으로 활용 가능. 코딩 및 멀티스텝 태스크 벤치마크에서 Gemini 3.1 Pro 능가. API 접근 가능.</div>
+      <span class="tool-tag">Google</span><span class="tool-tag">Fast Inference</span><span class="tool-tag">Agentic</span>
+    </div>
+  </div>
+
+  <!-- 섹션 4: 기업 동향 -->
+  <div class="section">
+    <div class="section-title">
+      <span class="badge" style="background:#3b82f6">Industry</span>
+      <h2>주요 AI 기업 동향</h2>
+    </div>
+    <div class="card">
+      <div class="company-row">
+        <div class="company-logo" style="background:#10a37f22; color:#10a37f;">O</div>
+        <div>
+          <div class="company-name">OpenAI</div>
+          <div class="company-update">Visa와 파트너십 체결, AI 에이전트의 온라인 결제 자율 실행 기능 개발 중. 에이전트의 실세계 트랜잭션 실행 능력 확장에 집중.</div>
+        </div>
+      </div>
+      <div class="company-row">
+        <div class="company-logo" style="background:#6c63ff22; color:#9d94ff;">A</div>
+        <div>
+          <div class="company-name">Anthropic</div>
+          <div class="company-update">연매출 런레이트 $300억 돌파. Claude Code $25억 ARR 달성. MCP 9,700만 설치로 에이전트 표준 인프라 지위 확립.</div>
+        </div>
+      </div>
+      <div class="company-row">
+        <div class="company-logo" style="background:#4285f422; color:#4285f4;">G</div>
+        <div>
+          <div class="company-name">Google</div>
+          <div class="company-update">Google I/O에서 Gemini 3.5 Flash, 개인 AI 에이전트 Gemini Spark, 에이전틱 앱 개발 플랫폼 발표. 100개 이상 제품 업데이트.</div>
+        </div>
+      </div>
+      <div class="company-row">
+        <div class="company-logo" style="background:#1877f222; color:#1877f2;">M</div>
+        <div>
+          <div class="company-name">Meta</div>
+          <div class="company-update">MCP 호환 툴링 출시, 업계 표준 프로토콜 동참. Llama 기반 오픈소스 에이전트 생태계 지속 확장 중.</div>
+        </div>
+      </div>
+      <div class="company-row">
+        <div class="company-logo" style="background:#76b90022; color:#76b900;">N</div>
+        <div>
+          <div class="company-name">NVIDIA</div>
+          <div class="company-update">GTC에서 오픈소스 Agent Toolkit 발표. 하드웨어를 넘어 엔터프라이즈 에이전트 소프트웨어 스택으로 영역 확장.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 섹션 5: 학습 포인트 -->
+  <div class="section">
+    <div class="section-title">
+      <span class="badge" style="background:#f43f5e">Learn</span>
+      <h2>오늘의 학습 포인트</h2>
+    </div>
+    <div class="card">
+      <div class="learn-item">
+        <div class="learn-num">1</div>
+        <div class="learn-text"><strong>Model Context Protocol(MCP)의 Host-Client-Server 구조를 이해하라.</strong> 에이전트가 외부 도구와 표준화된 방식으로 상호작용하는 핵심 프로토콜이다. 직접 MCP 서버를 하나 만들어보는 것이 가장 빠른 학습법.</div>
+      </div>
+      <div class="learn-item">
+        <div class="learn-num">2</div>
+        <div class="learn-text"><strong>에이전트의 "실행 능력"이 확장되고 있음을 인식하라.</strong> 결제(OpenAI-Visa), 코드 작성(Claude Code), 기업 시스템 연동(NVIDIA Toolkit) 등 에이전트가 단순 텍스트 생성을 넘어 실세계 액션을 수행하는 방향으로 발전 중. 권한 관리와 안전성이 핵심 이슈.</div>
+      </div>
+      <div class="learn-item">
+        <div class="learn-num">3</div>
+        <div class="learn-text"><strong>빠른 추론 모델(Flash 계열)의 에이전틱 파이프라인 활용법을 익혀라.</strong> Gemini 3.5 Flash처럼 속도와 비용을 최적화한 모델이 에이전트 파이프라인의 중간 계층을 담당하는 하이브리드 아키텍처가 표준이 되고 있다. 무조건 최대 모델보다 태스크별 모델 선택이 중요해지는 시대.</div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    생성 일시: 2026년 6월 11일 &nbsp;|&nbsp; AI & 에이전트 동향 리포트 &nbsp;|&nbsp; Claude Sonnet 4.6
+  </footer>
+
+</div>
+</body>
+</html>
